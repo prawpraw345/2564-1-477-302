@@ -33,6 +33,11 @@ function addTodo(e) {
   completedButton.innerHTML = `<i class="fas fa-check"></i>`;
   completedButton.classList.add("complete-btn");
   todoDiv.appendChild(completedButton);
+  //Create Edit Button
+  const editButton = document.createElement("button");
+  editButton.innerHTML = `<i class="fas fa-edit"></i>`;
+  editButton.classList.add("edit-btn");
+  todoDiv.appendChild(editButton);
   //Create trash button
   const trashButton = document.createElement("button");
   trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
@@ -41,50 +46,26 @@ function addTodo(e) {
   //attach final Todo
   todoList.appendChild(todoDiv);
 }
-
 function deleteTodo(e) {
-  const item = e.target;
-
-  if (item.classList[0] === "trash-btn") {
-    // e.target.parentElement.remove();
-    const todo = item.parentElement;
-    todo.classList.add("fall");
-    //at the end
-    removeLocalTodos(todo);
-    todo.addEventListener("transitionend", e => {
-      todo.remove();
-    });
-  }
-  if (item.classList[0] === "complete-btn") {
-    const todo = item.parentElement;
-    todo.classList.toggle("completed");
-    console.log(todo);
-  }
-}
-
-function filterTodo(e) {
-  const todos = todoList.childNodes;
-  todos.forEach(function(todo) {
-    switch (e.target.value) {
-      case "all":
-        todo.style.display = "flex";
-        break;
-      case "completed":
-        if (todo.classList.contains("completed")) {
-          todo.style.display = "flex";
-        } else {
-          todo.style.display = "none";
-        }
-        break;
-      case "uncompleted":
-        if (!todo.classList.contains("completed")) {
-          todo.style.display = "flex";
-        } else {
-          todo.style.display = "none";
-        }
+    const item = e.target;
+  
+    if (item.classList[0] === "trash-btn") {
+      // e.target.parentElement.remove();
+      const todo = item.parentElement;
+      todo.classList.add("fall");
+      //at the end
+      removeLocalTodos(todo);
+      todo.addEventListener("transitionend", e => {
+        todo.remove();
+      });
     }
-  });
-}
+    if (item.classList[0] === "complete-btn") {
+      const todo = item.parentElement;
+      todo.classList.toggle("completed");
+      console.log(todo);
+    }
+  }  
+  
 
 function saveLocalTodos(todo) {
   let todos;
@@ -130,6 +111,11 @@ function getTodos() {
     completedButton.innerHTML = `<i class="fas fa-check"></i>`;
     completedButton.classList.add("complete-btn");
     todoDiv.appendChild(completedButton);
+    //Create Edit Button
+    const editButton = document.createElement("button");
+    editButton.innerHTML = `<i class="fas fa-edit"></i>`;
+    editButton.classList.add("edit-btn");
+    todoDiv.appendChild(editButton);
     //Create trash button
     const trashButton = document.createElement("button");
     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;

@@ -44,7 +44,7 @@
   }
   
   .todo-list {
-    min-width: 30%;
+    min-width: 70%;
     list-style: none;
   }
   
@@ -65,7 +65,7 @@
     flex: 1;
   }
   
-  .trash-btn,
+  .trash-btn,.edit-btn,
   .complete-btn {
     background: #ff6f47;
     color: white;
@@ -76,6 +76,9 @@
   }
   .complete-btn {
     background: rgb(11, 212, 162);
+  }
+  .edit-btn {
+    background: rgb(187, 71, 216);
   }
   .todo-item {
     padding: 0rem 0.5rem;
@@ -92,6 +95,11 @@
   }
   
   .completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .edit {
     text-decoration: line-through;
     opacity: 0.5;
   }
